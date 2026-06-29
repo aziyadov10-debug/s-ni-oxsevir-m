@@ -3,114 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sənin Üçün Sürpriz var! ❤️</title>
+    <title>Əli & Lamiyə 💖</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ffe6e6, #ffb3b3);
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0, #ffc0cb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
             overflow: hidden;
+            perspective: 1000px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Əsas Giriş Kartı */
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             text-align: center;
+            max-width: 90%;
+            width: 400px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            z-index: 10;
         }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            max-width: 400px;
-            position: relative;
+
+        .main-heart {
+            font-size: 70px;
+            animation: pulse 1.2s infinite;
+            display: inline-block;
+            margin-bottom: 15px;
         }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
         h1 {
-            color: #d63031;
-            font-size: 24px;
+            color: #d63384;
+            font-size: 26px;
+            margin-bottom: 25px;
+            font-weight: 600;
         }
-        p {
-            font-size: 18px;
-            color: #4d4d4d;
-        }
-        .buttons {
-            margin-top: 20px;
+
+        .btn-container {
             display: flex;
             justify-content: center;
             gap: 20px;
+            position: relative;
+            height: 60px;
+            align-items: center;
         }
-        button {
-            padding: 12px 25px;
+
+        .btn {
+            padding: 12px 35px;
             font-size: 18px;
+            font-weight: bold;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: 0.2s;
-            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        #yesBtn {
-            background-color: #2ecc71;
+
+        .btn-yes {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
             color: white;
         }
-        #yesBtn:hover {
-            background-color: #27ae60;
+
+        .btn-yes:hover {
             transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 65, 108, 0.4);
         }
-        #noBtn {
-            background-color: #e74c3c;
-            color: white;
+
+        .btn-no {
+            background-color: #f8d7da;
+            color: #842029;
             position: absolute;
+            transition: all 0.2s ease;
         }
-        .message-box {
+
+        /* Məktub və Detallar Səhifəsi (Gizli) */
+        .love-story {
             display: none;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 450px;
+            animation: fadeInUp 1s forwards;
         }
-        .heart {
-            font-size: 50px;
-            color: #e74c3c;
-            animation: beat .25s infinite alternate;
-            transform-origin: center;
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes beat{
-            to { transform: scale(1.2); }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            border-left: 5px solid #ff416c;
+        }
+
+        .message-box h2 {
+            color: #ff416c;
+            margin-bottom: 10px;
+        }
+
+        .message-box p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Əlavə İnteraktiv Düymələr */
+        .extra-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .gift-btn {
+            background: white;
+            border: 1px solid #ffb6c1;
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            color: #d63384;
+        }
+
+        .gift-btn:hover {
+            background: #ff416c;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Uçan Ürəklər Animasiyası */
+        .heart-sparkle {
+            position: absolute;
+            color: #ff416c;
+            font-size: 20px;
+            pointer-events: none;
+            animation: fly Up 2s linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes flyUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container" id="gameBox">
-        <div class="heart">❤️</div>
-        <h1 id="question">Məni sevirsən? 😊</h1>
-        <div class="buttons" id="btnContainer">
-            <button id="yesBtn" onclick="selectYes()">Hə 😍</button>
-            <button id="noBtn" onmouseover="moveNoButton()">Yox 😜</button>
+    <div class="card" id="questionCard">
+        <div class="main-heart">❤️</div>
+        <h1>Məni sevirsən, Lamiyə? 😊</h1>
+        <div class="btn-container">
+            <button class="btn btn-yes" onclick="acceptLove()">Hə 😍</button>
+            <button class="btn btn-no" id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">Yox 😜</button>
         </div>
     </div>
 
-    <div class="container message-box" id="resultBox">
-        <div class="heart">💖✨💖</div>
-        <h1>Mən də Səni Çox Sevirəm! 🥰</h1>
-        <!-- Bura öz ürək sözlərini yaza bilərsən -->
-        <p>Həyatımda olduğun hər gün üçün sənə təşəkkür edirəm. Sən mənim başıma gələn ən gözəl şeysən. Yaxşı ki varsan, dünyam! 🌹</p>
+    <div class="love-story" id="loveStory">
+        <div class="message-box">
+            <h2>💖 Mən də Səni Çox Sevirəm! 🥰</h2>
+            <p id="dynamicText">Həyatımda olduğun hər gün üçün sənə təşəkkür edirəm, Lamiyə. Sən mənim başıma gələn ən gözəl şeysən. Yaxşı ki varsan, dünyam! 🌹<br><br><b>Səni çox sevən: Əli ✨</b></p>
+        </div>
+
+        <div class="extra-buttons">
+            <button class="gift-btn" onclick="changeMessage('reason')">💡 Niyə Sən?</button>
+            <button class="gift-btn" onclick="changeMessage('future')">🚀 Gələcəyimiz</button>
+            <button class="gift-btn" onclick="changeMessage('compliment')">✨ Lamiyə üçün kompliment</button>
+            <button class="gift-btn" onclick="triggerMoreHearts()">❤️ Daha Çox Ürək!</button>
+        </div>
     </div>
 
     <script>
+        // "Yox" düyməsinin qaçma funksiyası
         function moveNoButton() {
             const noBtn = document.getElementById('noBtn');
-            const container = document.getElementById('gameBox');
+            const card = document.getElementById('questionCard');
             
-            // Düymənin qaçacağı hüdudları təyin edirik
-            const maxX = container.clientWidth - noBtn.clientWidth - 20;
-            const maxY = container.clientHeight - noBtn.clientHeight - 20;
+            // Kartın daxilində təhlükəsiz qaçış sahəsi hesablamaq
+            const maxX = card.clientWidth - noBtn.clientWidth - 20;
+            const maxY = card.clientHeight - noBtn.clientHeight - 20;
             
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
+            // Təsadüfi koordinatlar (Amma tam kartdan çıxmasın deyə məhdud)
+            const randomX = Math.floor(Math.random() * (maxX + 100)) - 50;
+            const randomY = Math.floor(Math.random() * (maxY + 50)) - 50;
             
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
         }
 
-        function selectYes() {
-            document.getElementById('gameBox').style.display = 'none';
-            document.getElementById('resultBox').style.display = 'block';
+        // "Hə" basıldıqda işə düşən böyük sürpriz
+        function acceptLove() {
+            document.getElementById('questionCard').style.display = 'none';
+            document.getElementById('loveStory').style.display = 'flex';
+            
+            // Sürekli uçan ürəklər generatoru açılır
+            setInterval(createHeart, 150);
+        }
+
+        // Ekranın altından yuxarı uçan ürəklər yaradılması
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-sparkle');
+            
+            // Fərqli ürək emojiləri
+            const heartsArray = ['❤️', '💖', '💝', '💕', '💗', '🌸'];
+            heart.innerText = heartsArray[Math.floor(Math.random() * heartsArray.length)];
+            
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 2 + 2) + 's'; // 2-4 saniyə arası sürət
+            heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
+
+        // "Daha Çox Ürək" düyməsi üçün əlavə partlayış effekti
+        function triggerMoreHearts() {
+            for(let i=0; i<30; i++) {
+                setTimeout(createHeart, i * 50);
+            }
+        }
+
+        // Detallı əlavə düymələrin mesaj dəyişdirmə funksiyası
+        function changeMessage(type) {
+            const textElement = document.getElementById('dynamicText');
+            triggerMoreHearts(); // Hər klikdə ürəklər uçsun
+            
+            if (type === 'reason') {
+                textElement.innerHTML = "<b>Niyə Sən? 🤔</b><br>Çünki gülüşün dünyamı işıqlandırır, Lamiyə. Səsin mənə dinclik verir. Əli üçün bu dünyada sənə bənzəyən ikinci bir xəzinə yoxdur! 👑";
+            } else if (type === 'future') {
+                textElement.innerHTML = "<b>Gələcəyimiz 🚀</b><br>Səninlə birlikdə neçə-neçə gözəl illərə, xatirələrə və səyahətlərə! Əl-ələ verib hər çətinliyin öhdəsindən gələcəyimiz xoşbəxt günlərə doğru... 🏠💞";
+            } else if (type === 'compliment') {
+                const compliments = [
+                    "Sən bu dünyadakı bütün güllərdən daha zərifsən! 🌸",
+                    "Gözlərindəki işıq heç vaxt sönməsin, mənim şahzadəm. 👑",
+                    "Hər anımda, hər fikrimdə sadəcə sən varsan, Lamiyə! 🥰"
+                ];
+                const randomCompliment = compliments[Math.floor(Math.random() * compliments.length)];
+                textElement.innerHTML = `<b>Xüsusi Kompliment ✨</b><br>${randomCompliment}<br><br><i>Həmişə gül, çünki gülmək sənə çox yaraşır!</i>`;
+            }
         }
     </script>
 </body>
