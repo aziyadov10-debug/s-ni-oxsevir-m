@@ -95,11 +95,14 @@
             box-shadow: 0 8px 20px rgba(255, 65, 108, 0.4);
         }
 
-        .btn-no {
-            background-color: #f8d7da;
-            color: #842029;
-            position: absolute;
-            transition: all 0.2s ease;
+        .btn-yes-2 {
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            color: white;
+        }
+
+        .btn-yes-2:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 117, 140, 0.4);
         }
 
         /* Məktub və Detallar Səhifəsi (Gizli) */
@@ -168,7 +171,7 @@
             color: #ff416c;
             font-size: 20px;
             pointer-events: none;
-            animation: fly Up 2s linear forwards;
+            animation: flyUp 2s linear forwards;
             z-index: 1;
         }
 
@@ -185,7 +188,7 @@
         <h1>Məni sevirsən, Lamiyə? 😊</h1>
         <div class="btn-container">
             <button class="btn btn-yes" onclick="acceptLove()">Hə 😍</button>
-            <button class="btn btn-no" id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">Yox 😜</button>
+            <button class="btn btn-yes-2" onclick="acceptLove()">Çoxx! 🥰</button>
         </div>
     </div>
 
@@ -204,24 +207,7 @@
     </div>
 
     <script>
-        // "Yox" düyməsinin qaçma funksiyası
-        function moveNoButton() {
-            const noBtn = document.getElementById('noBtn');
-            const card = document.getElementById('questionCard');
-            
-            // Kartın daxilində təhlükəsiz qaçış sahəsi hesablamaq
-            const maxX = card.clientWidth - noBtn.clientWidth - 20;
-            const maxY = card.clientHeight - noBtn.clientHeight - 20;
-            
-            // Təsadüfi koordinatlar (Amma tam kartdan çıxmasın deyə məhdud)
-            const randomX = Math.floor(Math.random() * (maxX + 100)) - 50;
-            const randomY = Math.floor(Math.random() * (maxY + 50)) - 50;
-            
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
-        }
-
-        // "Hə" basıldıqda işə düşən böyük sürpriz
+        // Seçim edildikdə işə düşən böyük sürpriz
         function acceptLove() {
             document.getElementById('questionCard').style.display = 'none';
             document.getElementById('loveStory').style.display = 'flex';
@@ -240,7 +226,7 @@
             heart.innerText = heartsArray[Math.floor(Math.random() * heartsArray.length)];
             
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 2 + 2) + 's'; // 2-4 saniyə arası sürət
+            heart.style.animationDuration = (Math.random() * 2 + 2) + 's'; 
             heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
             
             document.body.appendChild(heart);
